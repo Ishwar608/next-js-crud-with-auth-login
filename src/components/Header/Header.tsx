@@ -10,6 +10,7 @@ import AvatarPlaceholder from "@/assets/icons/avatar-placeholder.png";
 import { ModeToggle } from "../ModeToggle";
 import { MyAvatar } from "../SideAvatar/MyAvatar";
 import { HeaderLists } from "@/lib/constants/static-json";
+import { Routes } from "@/config/routes";
 
 export default function Header() {
   return (
@@ -25,7 +26,7 @@ export default function Header() {
           </NavigationMenuItem>
         ))}
         <NavigationMenuItem>
-          <Link href={"/sign-in"} legacyBehavior passHref>
+          <Link href={Routes.login} legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
               {"Login"}
             </NavigationMenuLink>

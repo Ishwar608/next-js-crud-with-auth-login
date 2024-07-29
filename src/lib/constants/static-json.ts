@@ -1,19 +1,20 @@
+import { Routes } from "@/config/routes";
 import { HeaderList } from "@/types/contents";
 
 export const HeaderLists: HeaderList[] = [
   {
     id: 1,
     title: "Home",
-    href: "/",
+    href: Routes.home,
   },
   {
     id: 2,
     title: "Products",
-    href: "/product",
+    href: Routes.dashboard,
   },
   {
     id: 1,
     title: "Weather",
-    href: "/weather",
+    href: Routes.weather,
   },
 ];

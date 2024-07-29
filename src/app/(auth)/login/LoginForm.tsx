@@ -1,22 +1,19 @@
 "use client";
-import React from "react";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-import { loginFormSchema } from "@/lib/validation-form/authentication";
+import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { useQuery } from "@tanstack/react-query";
 import { useLogin } from "@/helpers/hooks/rest-user/user";
+import { loginFormSchema } from "@/lib/validation-form/authentication";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
 
 export default function LoginForm() {
   const mutation = useLogin();
@@ -28,10 +25,7 @@ export default function LoginForm() {
     },
   });
   function onSubmit(values: z.infer<typeof loginFormSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
     mutation.mutate(values);
-    console.log(values);
   }
 
   return (
