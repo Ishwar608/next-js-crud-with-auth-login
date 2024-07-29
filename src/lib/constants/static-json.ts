@@ -1,4 +1,4 @@
-import { HeaderList } from "./types";
+import { HeaderList } from "@/types/contents";
 
 export const HeaderLists: HeaderList[] = [
   {

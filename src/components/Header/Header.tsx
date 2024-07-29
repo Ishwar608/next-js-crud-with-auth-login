@@ -9,11 +9,11 @@ import Link from "next/link";
 import AvatarPlaceholder from "@/assets/icons/avatar-placeholder.png";
 import { ModeToggle } from "../ModeToggle";
 import { MyAvatar } from "../SideAvatar/MyAvatar";
-import { HeaderLists } from "@/utils/constent";
+import { HeaderLists } from "@/lib/constants/static-json";
 
 export default function Header() {
   return (
-    <NavigationMenu className="w-full py-2">
+    <NavigationMenu className="mt-2 w-full rounded border border-black p-3 dark:border-white">
       <NavigationMenuList className="justify-end space-x-3">
         {HeaderLists.map((header) => (
           <NavigationMenuItem key={header.id}>
@@ -24,6 +24,13 @@ export default function Header() {
             </Link>
           </NavigationMenuItem>
         ))}
+        <NavigationMenuItem>
+          <Link href={"/sign-in"} legacyBehavior passHref>
+            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+              {"Login"}
+            </NavigationMenuLink>
+          </Link>
+        </NavigationMenuItem>
         <NavigationMenuItem>
           <MyAvatar logoName={"IS"} />
         </NavigationMenuItem>
