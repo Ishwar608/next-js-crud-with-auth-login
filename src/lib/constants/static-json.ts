@@ -13,7 +13,7 @@ export const HeaderLists: HeaderList[] = [
     href: Routes.dashboard,
   },
   {
-    id: 1,
+    id: 3,
     title: "Weather",
     href: Routes.weather,
   },
