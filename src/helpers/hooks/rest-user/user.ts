@@ -3,7 +3,12 @@ import { toast } from "@/components/ui/use-toast";
 import { Routes } from "@/config/routes";
 import { HttpClient } from "@/helpers/clients/http-client";
 import { useToken } from "@/helpers/Cookies/use-token";
-import { LoginUserInput, LoginUserResponse } from "@/types/auth";
+import {
+  LoginUserInput,
+  LoginUserResponse,
+  SignUpUserInput,
+  SignUpUserResponse,
+} from "@/types/auth";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 import { authorizationAtom } from "../authorization-atom/authorization-atom";
@@ -24,6 +29,28 @@ export function useLogin() {
         description: `Welcome ${data.firstName} ${data.lastName}, You have logged in successfully.`,
       });
       router.push(Routes.dashboard);
+      router.refresh();
+    },
+    onError: (error: Error) => {
+      toast({
+        variant: "destructive",
+        description: `${error.message}`,
+      });
+    },
+  });
+
+  return mutation;
+}
+export function useSignUp() {
+  const router = useRouter();
+  const mutation = useMutation({
+    mutationFn: async (input: SignUpUserInput) =>
+      HttpClient.post<SignUpUserResponse>("accounts/register", input),
+    onSuccess: (data) => {
+      toast({
+        description: `${data.message}`,
+      });
+      router.push(Routes.login);
       router.refresh();
     },
     onError: (error: Error) => {

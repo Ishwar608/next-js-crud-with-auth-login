@@ -14,3 +14,16 @@ export interface LoginUserResponse {
   isVerified: boolean;
   jwtToken: string;
 }
+export interface SignUpUserInput {
+  title: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+  acceptTerms: boolean;
+}
+
+export interface SignUpUserResponse {
+  message: string;
+}
